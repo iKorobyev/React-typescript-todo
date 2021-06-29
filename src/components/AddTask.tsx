@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {IAddTask} from "../types/types";
+import {IAddTask, IMessage} from "../types/types";
 
 interface AddTaskProps {
     onAddTask: IAddTask;
@@ -8,9 +8,11 @@ interface AddTaskProps {
 const AddTask: FC<AddTaskProps> = ({onAddTask}) => {
     const [text, setText] = useState('');
 
+    const messageError: IMessage = error => alert(error);
+
     const addTask = () => {
         if (text) {
-            if (text.length > 35) throw new Error('Допустимой количество символов 35. Заменю позже)')
+            if (text.length > 35) throw messageError('Максимальное количество символов 35');
             onAddTask(text)
         }
         setText('');

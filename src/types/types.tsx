@@ -8,3 +8,5 @@ export type IToggleCompleted = (selectedTodo: ITodo) => void;
 export type IRemoveTask = (index: number) => void;
 
 export type IAddTask = (text: string) => void;
+
+export type IMessage = (error: string) => void;
